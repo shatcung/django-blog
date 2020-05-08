@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static "css/blog.css" %}" rel="stylesheet">
+</head>
+<body>
+
+  <div id="sidebar">
+    <h3>CUSDEB: Блог</h3>
+      <p>Кастомизация операционных систем</p>
+  </div>
+   <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

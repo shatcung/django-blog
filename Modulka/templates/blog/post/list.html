@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+
+{% endblock %}
+{% block title %}CUSDEB: Блог{% endblock %}
+ 
+{% block content %}
+  <h1 style="padding:20px 0 10px 0;">Posts</h1>
+  {% if tag %}
+    <h2>Posts tagged with "{{ tag.name }}"</h2>
+  {% endif %}
+  {% for post in posts %}
+    <h2>
+      <a href="{{post.get_absolute_url}}">{{ post.post_title }}</a>
+    </h2>
+    <p class="tags">
+      Tags:
+      {% for tag in post.tags.all %}
+        <a href="{% url "Modulka:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+        {% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+    <p class="date">
+      Published {{ post.publish }} by {{ post.post_author }}
+    </p>
+    {{ post.post_content|truncatewords:30|linebreaks }}
+  {% endfor %}
+  {% include "pagination.html" with page=posts %}
+{% endblock %}
