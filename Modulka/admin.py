@@ -2,7 +2,9 @@ from django.contrib import admin
 from .models import Post, Comment
 
 @admin.register(Post)
+
 class PostAdmin(admin.ModelAdmin):
+	
     list_display = ('post_title',
 		       'post_status','post_type','publish','post_modified')
     list_filter = ('post_status', 'publish')
@@ -14,7 +16,9 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Comment)
+
 class CommentAdmin(admin.ModelAdmin): 
+	
     list_display = ('name', 'email', 'post', 'created', 'active') 
     list_filter = ('active', 'created', 'updated') 
     search_fields = ('name', 'email', 'body') 
