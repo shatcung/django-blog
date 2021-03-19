@@ -3,7 +3,7 @@ django-ckeditor==5.9.0
 django-js-asset==1.2.2
 django-slugify-processor==0.8.4
 django-taggit==0.22.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 psycopg2==2.7.4
 pytils==0.3
 pytz==2019.3
